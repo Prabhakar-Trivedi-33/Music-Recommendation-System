@@ -1,0 +1,58 @@
+{
+  "name": "music-recommendation-system",
+  "version": "1.0.0",
+  "description": "An AI-powered music discovery platform with advanced analytics and machine learning insights",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -c-1",
+    "dev": "npx live-server --port=8080 --no-browser",
+    "build": "echo 'No build process needed for static HTML'",
+    "lint": "npx eslint js/ --ext .js",
+    "lint:fix": "npx eslint js/ --ext .js --fix",
+    "format": "npx prettier --write .",
+    "test": "echo 'No tests specified yet'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/music-recommendation-system.git"
+  },
+  "keywords": [
+    "music",
+    "recommendation",
+    "machine-learning",
+    "ai",
+    "analytics",
+    "javascript",
+    "html5",
+    "css3",
+    "data-visualization",
+    "music-discovery"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://github.com/yourusername"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/music-recommendation-system/issues"
+  },
+  "homepage": "https://github.com/yourusername/music-recommendation-system#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1",
+    "gh-pages": "^6.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
