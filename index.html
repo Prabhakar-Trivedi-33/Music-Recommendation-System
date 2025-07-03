@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Recommendation System</title>
+    <meta name="description" content="AI-powered music recommendation system with multiple algorithms and advanced analytics">
+    <meta name="keywords" content="music, recommendation, AI, machine learning, personalized">
+    <meta name="author" content="Your Name">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="AI Music Recommendation System">
+    <meta property="og:description" content="Discover your next favorite song with AI-powered recommendations">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Music Recommendation System">
+    <meta name="twitter:description" content="Discover your next favorite song with AI-powered recommendations">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading your music universe...</p>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🎵 AI Music Recommendation System</h1>
+            <p>Discover your next favorite song with advanced machine learning algorithms</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs" role="tablist">
+            <button class="tab active" role="tab" aria-selected="true" aria-controls="user-profile" onclick="showPanel('user-profile')">
+                User Profile
+            </button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="recommendations" onclick="showPanel('recommendations')">
+                Recommendations
+            </button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="analytics" onclick="showPanel('analytics')">
+                Analytics
+            </button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="ml-insights" onclick="showPanel('ml-insights')">
+                ML Insights
+            </button>
+        </nav>
+
+        <!-- User Profile Panel -->
+        <section id="user-profile" class="panel active" role="tabpanel" aria-labelledby="user-profile-tab">
+            <h2>Setup Your Music Profile</h2>
+            <div class="user-profile">
+                <div class="profile-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-group">
+                        <label for="userName">Name:</label>
+                        <input type="text" id="userName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userAge">Age:</label>
+                        <input type="number" id="userAge" min="13" max="100" placeholder="Enter your age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userLocation">Location:</label>
+                        <input type="text" id="userLocation" placeholder="Enter your location">
+                    </div>
+                </div>
+                <div class="profile-section">
+                    <h3>Music Preferences</h3>
+                    <div class="form-group">
+                        <label for="favoriteGenre">Favorite Genre:</label>
+                        <select id="favoriteGenre" required>
+                            <option value="">Select a genre</option>
+                            <option value="pop">Pop</option>
+                            <option value="rock">Rock</option>
+                            <option value="hip-hop">Hip-Hop</option>
+                            <option value="electronic">Electronic</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="classical">Classical</option>
+                            <option value="country">Country</option>
+                            <option value="r&b">R&B</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="listeningTime">Preferred Listening Time:</label>
+                        <select id="listeningTime" required>
+                            <option value="">Select time</option>
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening">Evening</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentMood">Current Mood:</label>
+                        <select id="currentMood" required>
+                            <option value="">Select mood</option>
+                            <option value="happy">Happy</option>
+                            <option value="sad">Sad</option>
+                            <option value="energetic">Energetic</option>
+                            <option value="relaxed">Relaxed</option>
+                            <option value="focused">Focused</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-button" onclick="saveProfile()">
+                Save Profile & Generate Recommendations
+            </button>
+        </section>
+
+        <!-- Recommendations Panel -->
+        <section id="recommendations" class="panel" role="tabpanel" aria-labelledby="recommendations-tab">
+            <h2>Your Personalized Recommendations</h2>
+            <div class="algorithm-selector">
+                <button class="algorithm-btn active" onclick="selectAlgorithm('collaborative')">
+                    Collaborative Filtering
+                </button>
+                <button class="algorithm-btn" onclick="selectAlgorithm('content')">
+                    Content-Based
+                </button>
+                <button class="algorithm-btn" onclick="selectAlgorithm('hybrid')">
+                    Hybrid Model
+                </button>
+                <button class="algorithm-btn" onclick="selectAlgorithm('deep-learning')">
+                    Deep Learning
+                </button>
+            </div>
+            <div id="recommendationResults" class="recommendations">
+                <div class="loading">
+                    <p>Set up your profile first to get personalized recommendations!</p>
+                </div>
+            </div>
+            <div class="recommendation-actions">
+                <button class="secondary-button" onclick="exportRecommendations()">
+                    Export Recommendations
+                </button>
+                <button class="secondary-button" onclick="generatePlaylist()">
+                    Generate Playlist
+                </button>
+            </div>
+        </section>
+
+        <!-- Analytics Panel -->
+        <section id="analytics" class="panel" role="tabpanel" aria-labelledby="analytics-tab">
+            <h2>Music Analytics Dashboard</h2>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Total Songs</h3>
+                    <div class="value" id="totalSongs">10,000</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Unique Artists</h3>
+                    <div class="value" id="uniqueArtists">2,500</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Genres</h3>
+                    <div class="value" id="totalGenres">25</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Avg Rating</h3>
+                    <div class="value" id="avgRating">4.2</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Genre Distribution</h3>
+                <canvas id="genreChart" width="400" height="200" aria-label="Genre distribution pie chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>User Engagement Over Time</h3>
+                <canvas id="engagementChart" width="400" height="200" aria-label="User engagement line chart"></canvas>
+            </div>
+        </section>
+
+        <!-- ML Insights Panel -->
+        <section id="ml-insights" class="panel" role="tabpanel" aria-labelledby="ml-insights-tab">
+            <h2>Machine Learning Insights</h2>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Model Accuracy</h3>
+                    <div class="value" id="modelAccuracy">87.3%</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Training Time</h3>
+                    <div class="value" id="trainingTime">2.4s</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Features Used</h3>
+                    <div class="value" id="featuresUsed">15</div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Precision</h3>
+                    <div class="value" id="precision">0.85</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Feature Importance</h3>
+                <canvas id="featureChart" width="400" height="200" aria-label="Feature importance bar chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Model Performance Comparison</h3>
+                <canvas id="performanceChart" width="400" height="200" aria-label="Model performance comparison chart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 AI Music Recommendation System. Built with ❤️ for music lovers.</p>
+        <p>
+            <a href="https://github.com/yourusername/ai-music-recommendation" target="_blank">
+                View on GitHub
+            </a>
+        </p>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="data/music-dataset.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/algorithms.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered'))
+                .catch(error => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+</html>
